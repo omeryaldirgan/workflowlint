@@ -1,0 +1,94 @@
+{
+  "$source": "https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions",
+  "$updated": "2026-01-18T16:53:22.683Z",
+  "contexts": [
+    {
+      "context": "github.event.issue.title",
+      "description": "Issue title - user controlled"
+    },
+    {
+      "context": "github.event.issue.body",
+      "description": "Issue body - user controlled"
+    },
+    {
+      "context": "github.event.pull_request.title",
+      "description": "PR title - user controlled"
+    },
+    {
+      "context": "github.event.pull_request.body",
+      "description": "PR body - user controlled"
+    },
+    {
+      "context": "github.event.pull_request.head.ref",
+      "description": "PR head branch name - user controlled"
+    },
+    {
+      "context": "github.event.pull_request.head.label",
+      "description": "PR head label - user controlled"
+    },
+    {
+      "context": "github.event.pull_request.head.repo.default_branch",
+      "description": "PR head repo default branch"
+    },
+    {
+      "context": "github.event.comment.body",
+      "description": "Comment body - user controlled"
+    },
+    {
+      "context": "github.event.review.body",
+      "description": "Review body - user controlled"
+    },
+    {
+      "context": "github.event.review_comment.body",
+      "description": "Review comment - user controlled"
+    },
+    {
+      "context": "github.event.pages.*.page_name",
+      "description": "Wiki page name - user controlled"
+    },
+    {
+      "context": "github.event.commits.*.message",
+      "description": "Commit message - user controlled"
+    },
+    {
+      "context": "github.event.commits.*.author.email",
+      "description": "Commit author email"
+    },
+    {
+      "context": "github.event.commits.*.author.name",
+      "description": "Commit author name"
+    },
+    {
+      "context": "github.event.head_commit.message",
+      "description": "Head commit message - user controlled"
+    },
+    {
+      "context": "github.event.head_commit.author.email",
+      "description": "Head commit author email"
+    },
+    {
+      "context": "github.event.head_commit.author.name",
+      "description": "Head commit author name"
+    },
+    {
+      "context": "github.event.discussion.title",
+      "description": "Discussion title - user controlled"
+    },
+    {
+      "context": "github.event.discussion.body",
+      "description": "Discussion body - user controlled"
+    },
+    {
+      "context": "github.head_ref",
+      "description": "Head branch reference - user controlled for PRs"
+    },
+    {
+      "context": "github.event.workflow_run.head_branch",
+      "description": "Triggering workflow head branch"
+    },
+    {
+      "context": "github.event.workflow_run.head_commit.message",
+      "description": "Triggering workflow commit message"
+    }
+  ]
+}

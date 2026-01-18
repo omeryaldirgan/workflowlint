@@ -1,0 +1,231 @@
+{
+  "$source": "https://json.schemastore.org/github-workflow.json",
+  "$updated": "2026-01-18T16:53:22.475Z",
+  "permissions": [
+    "actions",
+    "attestations",
+    "checks",
+    "contents",
+    "deployments",
+    "discussions",
+    "id-token",
+    "issues",
+    "models",
+    "packages",
+    "pages",
+    "pull-requests",
+    "repository-projects",
+    "security-events",
+    "statuses"
+  ],
+  "events": [
+    {
+      "event": "branch_protection_rule"
+    },
+    {
+      "event": "check_run"
+    },
+    {
+      "event": "check_suite"
+    },
+    {
+      "event": "create"
+    },
+    {
+      "event": "delete"
+    },
+    {
+      "event": "deployment"
+    },
+    {
+      "event": "deployment_status"
+    },
+    {
+      "event": "discussion"
+    },
+    {
+      "event": "discussion_comment"
+    },
+    {
+      "event": "fork"
+    },
+    {
+      "event": "gollum"
+    },
+    {
+      "event": "issue_comment"
+    },
+    {
+      "event": "issues"
+    },
+    {
+      "event": "label"
+    },
+    {
+      "event": "merge_group"
+    },
+    {
+      "event": "milestone"
+    },
+    {
+      "event": "page_build"
+    },
+    {
+      "event": "project"
+    },
+    {
+      "event": "project_card"
+    },
+    {
+      "event": "project_column"
+    },
+    {
+      "event": "public"
+    },
+    {
+      "event": "pull_request"
+    },
+    {
+      "event": "pull_request_review"
+    },
+    {
+      "event": "pull_request_review_comment"
+    },
+    {
+      "event": "pull_request_target"
+    },
+    {
+      "event": "push"
+    },
+    {
+      "event": "registry_package"
+    },
+    {
+      "event": "release"
+    },
+    {
+      "event": "repository_dispatch"
+    },
+    {
+      "event": "schedule"
+    },
+    {
+      "event": "status"
+    },
+    {
+      "event": "watch"
+    },
+    {
+      "event": "workflow_call"
+    },
+    {
+      "event": "workflow_dispatch"
+    },
+    {
+      "event": "workflow_run"
+    }
+  ],
+  "eventKeys": {
+    "branch_protection_rule": [
+      "types"
+    ],
+    "check_run": [
+      "types"
+    ],
+    "check_suite": [
+      "types"
+    ],
+    "create": [],
+    "delete": [],
+    "deployment": [],
+    "deployment_status": [],
+    "discussion": [
+      "types"
+    ],
+    "discussion_comment": [
+      "types"
+    ],
+    "fork": [],
+    "gollum": [],
+    "issue_comment": [
+      "types"
+    ],
+    "issues": [
+      "types"
+    ],
+    "label": [
+      "types"
+    ],
+    "merge_group": [
+      "types"
+    ],
+    "milestone": [
+      "types"
+    ],
+    "page_build": [],
+    "project": [
+      "types"
+    ],
+    "project_card": [
+      "types"
+    ],
+    "project_column": [
+      "types"
+    ],
+    "public": [],
+    "pull_request": [
+      "branches",
+      "branches-ignore",
+      "paths",
+      "paths-ignore",
+      "tags",
+      "tags-ignore",
+      "types"
+    ],
+    "pull_request_review": [
+      "types"
+    ],
+    "pull_request_review_comment": [
+      "types"
+    ],
+    "pull_request_target": [
+      "branches",
+      "branches-ignore",
+      "paths",
+      "paths-ignore",
+      "tags",
+      "tags-ignore",
+      "types"
+    ],
+    "push": [
+      "branches",
+      "branches-ignore",
+      "paths",
+      "paths-ignore",
+      "tags",
+      "tags-ignore"
+    ],
+    "registry_package": [
+      "types"
+    ],
+    "release": [
+      "types"
+    ],
+    "status": [],
+    "watch": [],
+    "workflow_call": [
+      "inputs",
+      "outputs",
+      "secrets"
+    ],
+    "workflow_dispatch": [
+      "inputs"
+    ],
+    "workflow_run": [
+      "types",
+      "workflows"
+    ],
+    "repository_dispatch": [],
+    "schedule": []
+  }
+}
