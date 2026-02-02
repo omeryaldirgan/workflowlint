@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-01-26T09:22:42.275Z",
+  "$updated": "2026-02-02T09:34:34.535Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -289,7 +289,7 @@
           "default": "true"
         },
         "cache-dependency-path": {
-          "description": "Used to specify the path to a dependency file - go.sum"
+          "description": "Used to specify the path to a dependency file (e.g., go.mod, go.sum)"
         },
         "architecture": {
           "description": "Target architecture for Go to use. Examples: x86, x64. Will use system architecture by default."
@@ -325,6 +325,10 @@
         },
         "cache-dependency-path": {
           "description": "Used to specify the path to a dependency file: packages.lock.json. Supports wildcards or a list of file names for caching multiple dependencies.",
+          "required": false
+        },
+        "workloads": {
+          "description": "Optional SDK workloads to install for additional platform support. Examples: wasm-tools, maui, aspire.",
           "required": false
         }
       },
@@ -983,6 +987,10 @@
           "description": "Specifies whether the given registry is ECR (auto, true or false)",
           "required": false
         },
+        "scope": {
+          "description": "Scope for the authentication token",
+          "required": false
+        },
         "logout": {
           "description": "Log out from the Docker registry at the end of a job",
           "default": "true",
@@ -1252,6 +1260,10 @@
         },
         "role-skip-session-tagging": {
           "description": "Skip session tagging during role assumption",
+          "required": false
+        },
+        "transitive-tag-keys": {
+          "description": "Define a list of transitive tag keys to pass when assuming a role",
           "required": false
         },
         "inline-session-policy": {
@@ -2787,6 +2799,11 @@
     "changesets/action": {
       "name": "Changesets",
       "inputs": {
+        "github-token": {
+          "description": "The GitHub token to use for authentication. Defaults to the GitHub-provided token.",
+          "required": false,
+          "default": "${{ github.token }}"
+        },
         "publish": {
           "description": "The command to use to build and publish packages",
           "required": false
