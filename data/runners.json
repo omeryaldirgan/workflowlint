@@ -1,6 +1,6 @@
 {
   "$source": "https://github.com/actions/runner-images",
-  "$updated": "2026-02-02T09:34:27.066Z",
+  "$updated": "2026-02-09T09:46:29.720Z",
   "runners": [
     "arm",
     "arm64",
@@ -20,8 +20,10 @@
     "macos-15-large",
     "macos-15-xlarge",
     "macos-26",
+    "macos-26-Readme",
     "macos-26-arm64",
     "macos-26-arm64-Readme",
+    "macos-26-large",
     "macos-26-xlarge",
     "macos-latest",
     "macos-latest-large",
@@ -40,6 +42,7 @@
     "windows-2022",
     "windows-2022-8-cores",
     "windows-2025",
+    "windows-2025-vs2026",
     "windows-latest",
     "windows-latest-8-cores",
     "x64"
