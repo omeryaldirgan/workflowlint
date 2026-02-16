@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-02-09T09:46:41.849Z",
+  "$updated": "2026-02-16T09:40:09.867Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -2657,7 +2657,7 @@
         "version": {
           "description": "Trivy version to use",
           "required": false,
-          "default": "v0.68.1"
+          "default": "v0.69.1"
         },
         "cache": {
           "description": "Used to specify whether caching is needed. Set to false, if you would like to disable caching.",
