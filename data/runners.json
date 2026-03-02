@@ -1,6 +1,6 @@
 {
   "$source": "https://github.com/actions/runner-images",
-  "$updated": "2026-02-23T09:40:35.790Z",
+  "$updated": "2026-03-02T09:35:37.576Z",
   "runners": [
     "arm",
     "arm64",
@@ -23,6 +23,7 @@
     "macos-26-Readme",
     "macos-26-arm64",
     "macos-26-arm64-Readme",
+    "macos-26-intel",
     "macos-26-large",
     "macos-26-xlarge",
     "macos-latest",

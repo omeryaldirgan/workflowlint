@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-02-23T09:40:43.612Z",
+  "$updated": "2026-03-02T09:35:46.019Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -330,6 +330,10 @@
         "workloads": {
           "description": "Optional SDK workloads to install for additional platform support. Examples: wasm-tools, maui, aspire.",
           "required": false
+        },
+        "architecture": {
+          "description": "Optional architecture for the .NET install. Supported values: x64, x86, arm64, amd64, arm, s390x, ppc64le, riscv64. If not set, the installer auto-detects the current system architecture.",
+          "required": false
         }
       },
       "description": "Contains the installed by action .NET SDK version for reuse."
@@ -380,11 +384,11 @@
       "name": "",
       "inputs": {
         "name": {
-          "description": "Artifact name",
+          "description": "Artifact name. If the `archive` input is `false`, the name of the file uploaded will be the artifact name.",
           "default": "artifact"
         },
         "path": {
-          "description": "A file, directory or wildcard pattern that describes what to upload",
+          "description": "A file, directory or wildcard pattern that describes what to upload.",
           "required": true
         },
         "if-no-files-found": {
@@ -405,6 +409,10 @@
         "include-hidden-files": {
           "description": ">",
           "default": "false"
+        },
+        "archive": {
+          "description": ">",
+          "default": "true"
         }
       },
       "description": ">"
@@ -446,6 +454,16 @@
           "description": "The id of the workflow run where the desired download artifact was uploaded from.",
           "required": false,
           "default": "${{ github.run_id }}"
+        },
+        "skip-decompress": {
+          "description": "If true, the downloaded artifact will not be automatically extracted/decompressed.",
+          "required": false,
+          "default": "false"
+        },
+        "digest-mismatch": {
+          "description": "The behavior when a downloaded artifact''s digest does not match the expected digest.",
+          "required": false,
+          "default": "error"
         }
       },
       "description": "Path of artifact download"
@@ -2630,7 +2648,7 @@
           "default": ""
         },
         "trivyignores": {
-          "description": "comma-separated list of relative paths in repository to one or more .trivyignore files",
+          "description": "comma-separated list of relative paths within the repository to one or more .trivyignore files, or a single .trivyignore.yaml file.",
           "required": false,
           "default": ""
         },
@@ -2657,7 +2675,7 @@
         "version": {
           "description": "Trivy version to use",
           "required": false,
-          "default": "v0.69.1"
+          "default": "v0.69.2"
         },
         "cache": {
           "description": "Used to specify whether caching is needed. Set to false, if you would like to disable caching.",
