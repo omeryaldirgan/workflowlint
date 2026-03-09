@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-03-02T09:35:46.019Z",
+  "$updated": "2026-03-09T09:35:47.548Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -947,19 +947,6 @@
         "cleanup": {
           "description": "Cleanup temp files and remove builder at the end of a job",
           "default": "true",
-          "required": false
-        },
-        "config": {
-          "description": "BuildKit daemon config file",
-          "required": false
-        },
-        "config-inline": {
-          "description": "Inline BuildKit daemon config",
-          "required": false
-        },
-        "install": {
-          "description": "Sets up docker build command as an alias to docker buildx build",
-          "default": "false",
           "required": false
         }
       },
@@ -2675,7 +2662,7 @@
         "version": {
           "description": "Trivy version to use",
           "required": false,
-          "default": "v0.69.2"
+          "default": "v0.69.3"
         },
         "cache": {
           "description": "Used to specify whether caching is needed. Set to false, if you would like to disable caching.",
