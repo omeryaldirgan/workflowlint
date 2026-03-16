@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-03-09T09:35:47.548Z",
+  "$updated": "2026-03-16T09:52:25.616Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -2106,7 +2106,7 @@
       "description": ">"
     },
     "slackapi/slack-github-action": {
-      "name": "Slack: Send to Slack",
+      "name": "The Slack GitHub Action",
       "inputs": {
         "api": {
           "description": "A custom API URL to send Slack API method requests to.",
@@ -2737,11 +2737,11 @@
           "required": false
         },
         "tag_name": {
-          "description": "Gives a tag name. Defaults to github.ref_name",
+          "description": "Gives a tag name. Defaults to github.ref_name. refs/tags/<name> values are normalized to <name>.",
           "required": false
         },
         "draft": {
-          "description": "Creates a draft release. Defaults to false",
+          "description": "Keeps the release as a draft. Defaults to false. When reusing an existing draft release, set this to true to keep it draft; omit it to publish after upload. On immutable-release repositories, use this for prereleases that upload assets and publish the draft later.",
           "required": false
         },
         "prerelease": {
@@ -2749,15 +2749,15 @@
           "required": false
         },
         "preserve_order": {
-          "description": "Preserver the order of the artifacts when uploading",
+          "description": "Upload artifacts sequentially in the provided order. This does not control the final display order GitHub uses for release assets.",
           "required": false
         },
         "files": {
-          "description": "Newline-delimited list of path globs for asset files to upload",
+          "description": "Newline-delimited list of path globs for asset files to upload. Escape glob metacharacters when matching literal filenames that contain them. `~/...` expands to the runner home directory. On Windows, both \\\\ and / path separators are accepted. GitHub may normalize raw asset filenames that contain special characters; the action restores the asset label when possible, but the final download name remains GitHub-controlled.",
           "required": false
         },
         "working_directory": {
-          "description": "Base directory to resolve 'files' globs against (defaults to job working-directory)",
+          "description": "Base directory to resolve 'files' globs against. Defaults to the workspace root used by the action step.",
           "required": false
         },
         "overwrite_files": {
@@ -2774,12 +2774,12 @@
           "required": false
         },
         "token": {
-          "description": "Authorized secret GitHub Personal Access Token. Defaults to github.token",
+          "description": "Authorized GitHub token or PAT. Defaults to github.token when omitted. A non-empty explicit token overrides GITHUB_TOKEN. Passing an empty string treats the token as unset.",
           "required": false,
           "default": "${{ github.token }}"
         },
         "target_commitish": {
-          "description": "Commitish value that determines where the Git tag is created from. Can be any branch or commit SHA.",
+          "description": "Commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. When creating a new tag for an older commit, `github.token` may not have permission to create the ref; use a PAT or another token with sufficient contents permissions if you hit 403 `Resource not accessible by integration`.",
           "required": false
         },
         "discussion_category_name": {
@@ -2789,6 +2789,11 @@
         "generate_release_notes": {
           "description": "Whether to automatically generate the name and body for this release. If name is specified, the specified name will be used; otherwise, a name will be automatically generated. If body is specified, the body will be pre-pended to the automatically generated notes.",
           "required": false
+        },
+        "previous_tag": {
+          "description": "Optional. When generate_release_notes is enabled, use this tag as GitHub's previous_tag_name comparison base. If omitted, GitHub chooses the comparison base automatically.",
+          "required": false,
+          "default": ""
         },
         "append_body": {
           "description": "Append to existing body instead of overwriting it. Default is false.",
@@ -3096,7 +3101,7 @@
           "required": false
         },
         "version-file": {
-          "description": "a versions file (e.g. as used by `asdf`), which defines inputs",
+          "description": ">-",
           "default": "",
           "required": false
         },
