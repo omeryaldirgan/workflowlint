@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-03-16T09:52:25.616Z",
+  "$updated": "2026-03-23T09:51:08.754Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -293,6 +293,9 @@
         },
         "architecture": {
           "description": "Target architecture for Go to use. Examples: x86, x64. Will use system architecture by default."
+        },
+        "go-download-base-url": {
+          "description": "Custom base URL for downloading Go distributions. Use this to download Go from a mirror or custom source. Defaults to \"https://go.dev/dl\". Can also be set via the GO_DOWNLOAD_BASE_URL environment variable. The input takes precedence over the environment variable."
         }
       },
       "description": "A boolean value to indicate if a cache was hit"
