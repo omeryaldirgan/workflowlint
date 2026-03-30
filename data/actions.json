@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-03-23T09:51:08.754Z",
+  "$updated": "2026-03-30T10:04:28.613Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -2481,6 +2481,11 @@
           "default": "false",
           "description": "if you want to create github deployment, set true, default: false"
         },
+        "github-deployment-environment": {
+          "required": false,
+          "description": "The environment for the GitHub deployment (e.g., production, staging, preview). If not specified, auto-detects: \"production\" when vercel-args contains --prod or --production, otherwise \"preview\".",
+          "default": ""
+        },
         "working-directory": {
           "required": false,
           "description": "the working directory"
@@ -2528,7 +2533,7 @@
           "default": ""
         }
       },
-      "description": "deployment preview name"
+      "description": "GitHub Deployment ID (only set when github-deployment is true)"
     },
     "snyk/actions": {
       "name": "Snyk",
