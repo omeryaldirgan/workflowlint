@@ -1,6 +1,6 @@
 {
   "$source": "https://json.schemastore.org/github-workflow.json",
-  "$updated": "2026-04-06T09:57:10.599Z",
+  "$updated": "2026-04-13T10:24:34.850Z",
   "permissions": [
     "actions",
     "artifact-metadata",
