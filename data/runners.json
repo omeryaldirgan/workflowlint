@@ -1,6 +1,6 @@
 {
   "$source": "https://github.com/actions/runner-images",
-  "$updated": "2026-04-27T10:51:05.780Z",
+  "$updated": "2026-05-04T10:52:18.579Z",
   "runners": [
     "arm",
     "arm64",

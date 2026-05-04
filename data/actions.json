@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-04-27T10:51:12.280Z",
+  "$updated": "2026-05-04T10:52:31.412Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -304,10 +304,13 @@
       "name": "Setup .NET Core SDK",
       "inputs": {
         "dotnet-version": {
-          "description": "Optional SDK version(s) to use. If not provided, will install global.json version when available. Examples: 2.2.104, 3.1, 3.1.x, 3.x, 6.0.2xx"
+          "description": "Optional SDK version(s) to use. If not provided, will install global.json version when available. Examples: 2.2.104, 3.1, 3.1.x, 3.x, 6.0.2xx, latest"
         },
         "dotnet-quality": {
-          "description": "Optional quality of the build. The possible values are: daily, signed, validated, preview, ga."
+          "description": "Optional quality of the build. The possible values are: daily, preview, ga."
+        },
+        "dotnet-channel": {
+          "description": "Optional channel for the installation. The possible values are: STS, LTS, A.B (e.g. 8.0), A.B.Cxx (e.g. 8.0.1xx, available since 5.0). To be used with \"dotnet-version: latest\"."
         },
         "global-json-file": {
           "description": "Optional global.json location, if your global.json isn''t located in the root of the repo."
@@ -2470,9 +2473,9 @@
           "required": true
         },
         "vercel-args": {
-          "description": "",
           "required": false,
-          "default": ""
+          "default": "",
+          "description": "Ad-hoc CLI flags forwarded directly to the Vercel CLI (e.g. \"--prod --force\"). The CLI is the default deployment mode. Mutually exclusive with experimental-api."
         },
         "github-comment": {
           "required": false,
@@ -2515,7 +2518,7 @@
         },
         "scope": {
           "required": false,
-          "description": "Team slug for Vercel CLI --scope flag. For API deployments, use vercel-org-id instead."
+          "description": "Team slug for the Vercel CLI --scope flag (used in the default CLI deployment mode). Prefer vercel-org-id, which works for both CLI and experimental API modes."
         },
         "zeit-token": {
           "description": "zeit.co token",
@@ -2547,6 +2550,11 @@
         "prebuilt": {
           "required": false,
           "description": "Deploy prebuilt output (default: false). Replaces --prebuilt flag in vercel-args.",
+          "default": "false"
+        },
+        "vercel-build": {
+          "required": false,
+          "description": "Run \"vercel pull\" + \"vercel build\" inside the action before deploying, then upload the resulting .vercel/output via the prebuilt deploy path. Mutually exclusive with prebuilt. Default: false.",
           "default": "false"
         },
         "vercel-output-dir": {
@@ -2602,6 +2610,11 @@
         "with-cache": {
           "required": false,
           "description": "Retain build cache from previous deployments (default: false).",
+          "default": "false"
+        },
+        "experimental-api": {
+          "required": false,
+          "description": "Opt in to the experimental API-based deployment via @vercel/client. The CLI is the default and recommended path. The API client relies on an internal Vercel package without semver guarantees and may break across updates. Mutually exclusive with vercel-args (default: false).",
           "default": "false"
         }
       },
