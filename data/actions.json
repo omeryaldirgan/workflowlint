@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-05-11T11:54:03.522Z",
+  "$updated": "2026-05-18T12:18:30.948Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
