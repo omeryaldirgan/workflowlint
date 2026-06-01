@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-05-25T12:15:44.802Z",
+  "$updated": "2026-06-01T14:44:21.440Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -969,6 +969,11 @@
         "platforms": {
           "description": "Platforms to install (e.g. arm64,riscv64,arm)",
           "default": "all",
+          "required": false
+        },
+        "reset": {
+          "description": "Uninstall current emulators before installation",
+          "default": "false",
           "required": false
         },
         "cache-image": {
@@ -2763,7 +2768,7 @@
         "version": {
           "description": "Trivy version to use",
           "required": false,
-          "default": "v0.70.0"
+          "default": "v0.71.0"
         },
         "cache": {
           "description": "Used to specify whether caching is needed. Set to false, if you would like to disable caching.",
