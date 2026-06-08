@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-06-01T14:44:21.440Z",
+  "$updated": "2026-06-08T12:54:46.176Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -1525,6 +1525,14 @@
         },
         "command": {
           "description": "The command used by ECS to start the container image",
+          "required": false
+        },
+        "task-role-arn": {
+          "description": "The full Amazon Resource Name (ARN) of the IAM role that the task can assume. Sets the taskRoleArn field on the task definition.",
+          "required": false
+        },
+        "execution-role-arn": {
+          "description": "The full Amazon Resource Name (ARN) of the task execution role. Sets the executionRoleArn field on the task definition.",
           "required": false
         },
         "env-files": {
