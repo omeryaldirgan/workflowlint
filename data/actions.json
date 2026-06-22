@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-06-15T14:52:06.079Z",
+  "$updated": "2026-06-22T14:22:11.082Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -80,6 +80,10 @@
         "github-server-url": {
           "description": "The base URL for the GitHub instance that you are trying to clone from, will use environment defaults to fetch from the same instance that the workflow is running from unless specified. Example URLs are https://github.com or https://my-ghes-server.example.com",
           "required": false
+        },
+        "allow-unsafe-pr-checkout": {
+          "description": ">",
+          "default": "false"
         }
       },
       "description": "The commit SHA that was checked out"
@@ -2776,7 +2780,7 @@
         "version": {
           "description": "Trivy version to use",
           "required": false,
-          "default": "v0.71.1"
+          "default": "v0.71.2"
         },
         "cache": {
           "description": "Used to specify whether caching is needed. Set to false, if you would like to disable caching.",
