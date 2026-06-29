@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-06-22T14:22:11.082Z",
+  "$updated": "2026-06-29T12:54:10.140Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -185,10 +185,12 @@
       "name": "Setup Java JDK",
       "inputs": {
         "java-version": {
-          "description": "The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file"
+          "description": "The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file",
+          "required": false
         },
         "java-version-file": {
-          "description": "The path to the `.java-version` file. See examples of supported syntax in README file"
+          "description": "The path to a file containing the Java version to set up (.java-version, .tool-versions, .sdkmanrc). Used when java-version is not set. See examples of supported syntax in README file",
+          "required": false
         },
         "distribution": {
           "description": "Java distribution. See the list of supported distributions in README file",
@@ -211,6 +213,15 @@
           "description": "Set this option if you want the action to check for the latest available version that satisfies the version spec",
           "required": false,
           "default": "false"
+        },
+        "verify-signature": {
+          "description": "Verify downloaded Java package signatures when supported by the selected distribution",
+          "required": false,
+          "default": "false"
+        },
+        "verify-signature-public-key": {
+          "description": "ASCII-armored GPG public key used to verify the downloaded package signature. Overrides the default bundled key for the selected distribution.",
+          "required": false
         },
         "server-id": {
           "description": "ID of the distributionManagement repository in the pom.xml",
@@ -238,10 +249,11 @@
         },
         "gpg-private-key": {
           "description": "GPG private key to import. Default is empty string.",
-          "required": false
+          "required": false,
+          "default": ""
         },
         "gpg-passphrase": {
-          "description": "Environment variable name for the GPG private key passphrase. Default is",
+          "description": "Environment variable name for the GPG private key passphrase. Defaults to GPG_PASSPHRASE when gpg-private-key is set; ignored otherwise.",
           "required": false
         },
         "cache": {
@@ -254,10 +266,12 @@
         },
         "job-status": {
           "description": "Workaround to pass job status to post job step. This variable is not intended for manual setting",
+          "required": false,
           "default": "${{ job.status }}"
         },
         "token": {
           "description": "The token used to authenticate when fetching version manifests hosted on github.com, such as for the Microsoft Build of OpenJDK. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.",
+          "required": false,
           "default": "${{ github.server_url == 'https://github.com' && github.token || '' }}"
         },
         "mvn-toolchain-id": {
@@ -308,25 +322,32 @@
       "name": "Setup .NET Core SDK",
       "inputs": {
         "dotnet-version": {
-          "description": "Optional SDK version(s) to use. If not provided, will install global.json version when available. Examples: 2.2.104, 3.1, 3.1.x, 3.x, 6.0.2xx, latest"
+          "description": "Optional SDK version(s) to use. If not provided, will install global.json version when available. Examples: 2.2.104, 3.1, 3.1.x, 3.x, 6.0.2xx, latest",
+          "required": false
         },
         "dotnet-quality": {
-          "description": "Optional quality of the build. The possible values are: daily, preview, ga."
+          "description": "Optional quality of the build. The possible values are: daily, preview, ga.",
+          "required": false
         },
         "dotnet-channel": {
-          "description": "Optional channel for the installation. The possible values are: STS, LTS, A.B (e.g. 8.0), A.B.Cxx (e.g. 8.0.1xx, available since 5.0). To be used with \"dotnet-version: latest\"."
+          "description": "Optional channel for the installation. The possible values are: STS, LTS, A.B (e.g. 8.0), A.B.Cxx (e.g. 8.0.1xx, available since 5.0). To be used with \"dotnet-version: latest\".",
+          "required": false
         },
         "global-json-file": {
-          "description": "Optional global.json location, if your global.json isn''t located in the root of the repo."
+          "description": "Optional global.json location, if your global.json isn''t located in the root of the repo.",
+          "required": false
         },
         "source-url": {
-          "description": "Optional package source for which to set up authentication. Will consult any existing NuGet.config in the root of the repo and provide a temporary NuGet.config using the NUGET_AUTH_TOKEN environment variable as a ClearTextPassword"
+          "description": "Optional package source for which to set up authentication. Will consult any existing NuGet.config in the root of the repo and provide a temporary NuGet.config using the NUGET_AUTH_TOKEN environment variable as a ClearTextPassword",
+          "required": false
         },
         "owner": {
-          "description": "Optional OWNER for using packages from GitHub Package Registry organizations/users other than the current repository''s owner. Only used if a GPR URL is also provided in source-url"
+          "description": "Optional OWNER for using packages from GitHub Package Registry organizations/users other than the current repository''s owner. Only used if a GPR URL is also provided in source-url",
+          "required": false
         },
         "config-file": {
-          "description": "Optional NuGet.config location, if your NuGet.config isn''t located in the root of the repo."
+          "description": "Optional NuGet.config location, if your NuGet.config isn''t located in the root of the repo.",
+          "required": false
         },
         "cache": {
           "description": "Optional input to enable caching of the NuGet global-packages folder",
@@ -2938,10 +2959,6 @@
         },
         "version": {
           "description": "The command to update version, edit CHANGELOG, read and delete changesets. Default to `changeset version` if not provided",
-          "required": false
-        },
-        "cwd": {
-          "description": "Sets the cwd for the node process. Default to `process.cwd()`",
           "required": false
         },
         "commit": {
