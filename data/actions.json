@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-06-29T12:54:10.140Z",
+  "$updated": "2026-07-06T12:33:17.057Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -281,6 +281,11 @@
         "mvn-toolchain-vendor": {
           "description": "Name of Maven Toolchain Vendor if the default name of \"${distribution}\" is not wanted. See examples of supported syntax in Advanced Usage file",
           "required": false
+        },
+        "show-download-progress": {
+          "description": "Whether Maven should print artifact download/transfer progress to the build log. When \"false\" (default) the action sets \"-ntp\" (--no-transfer-progress) in MAVEN_ARGS to produce cleaner logs. Set to \"true\" to keep the progress output. Has no effect on non-Maven builds.",
+          "required": false,
+          "default": "false"
         }
       },
       "description": "A boolean value to indicate an exact match was found for the primary key"
@@ -2801,7 +2806,7 @@
         "version": {
           "description": "Trivy version to use",
           "required": false,
-          "default": "v0.71.2"
+          "default": "v0.72.0"
         },
         "cache": {
           "description": "Used to specify whether caching is needed. Set to false, if you would like to disable caching.",
@@ -2953,44 +2958,51 @@
           "required": false,
           "default": "${{ github.token }}"
         },
-        "publish": {
+        "publish-script": {
           "description": "The command to use to build and publish packages",
           "required": false
         },
-        "version": {
+        "version-script": {
           "description": "The command to update version, edit CHANGELOG, read and delete changesets. Default to `changeset version` if not provided",
           "required": false
         },
-        "commit": {
-          "description": "|",
-          "required": false
+        "commit-message": {
+          "description": "The commit message. Default to `Version Packages`",
+          "required": false,
+          "default": "Version Packages"
         },
-        "title": {
+        "pr-title": {
           "description": "The pull request title. Default to `Version Packages`",
+          "required": false,
+          "default": "Version Packages"
+        },
+        "pr-draft": {
+          "description": "Controls draft PR behavior. Use 'create' to create new version PRs as draft, or 'always' to also convert existing version PRs back to draft when updating them.",
           "required": false
         },
-        "setupGitUser": {
-          "description": "Sets up the git user for commits as `\"github-actions[bot]\"`. Default to `true`",
+        "pr-base-branch": {
+          "description": "Sets the base branch of the PR. Defaults to `github.ref_name`.",
+          "required": false
+        },
+        "create-github-releases": {
+          "description": "Whether to create Github releases after publish",
           "required": false,
           "default": "true"
         },
-        "createGithubReleases": {
-          "description": "A boolean value to indicate whether to create Github releases after `publish` or not",
+        "push-git-tags": {
+          "description": ">",
           "required": false,
           "default": "true"
         },
-        "commitMode": {
+        "commit-mode": {
           "description": ">",
           "required": false,
           "default": "git-cli"
         },
-        "branch": {
-          "description": "Sets the branch in which the action will run. Default to `github.ref_name` if not provided",
-          "required": false
-        },
-        "prDraft": {
-          "description": "Controls draft PR behavior. Use \"create\" to create new version PRs as draft, or \"always\" to also convert existing version PRs back to draft when updating them.",
-          "required": false
+        "setup-git-user": {
+          "description": "Sets up the git user for commits as `\"github-actions[bot]\"`. Default to `true`",
+          "required": false,
+          "default": "true"
         }
       },
       "description": "The pull request number that was created or updated"
