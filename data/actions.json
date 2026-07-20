@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-07-13T11:47:11.247Z",
+  "$updated": "2026-07-20T11:32:07.372Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -174,9 +174,6 @@
         },
         "pip-version": {
           "description": "Used to specify the version of pip to install with the Python. Supported format: major[.minor][.patch]."
-        },
-        "pip-install": {
-          "description": "Used to specify the packages to install with pip after setting up Python. Can be a requirements file or package names."
         }
       },
       "description": "The absolute path to the Python or PyPy executable."
@@ -237,15 +234,21 @@
           "required": false,
           "default": "github"
         },
-        "server-username": {
+        "server-username-env-var": {
           "description": "Environment variable name for the username for authentication",
-          "required": false,
-          "default": "GITHUB_ACTOR"
+          "required": false
+        },
+        "server-username": {
+          "description": "Deprecated alias for server-username-env-var",
+          "required": false
+        },
+        "server-password-env-var": {
+          "description": "Environment variable name for password or token for",
+          "required": false
         },
         "server-password": {
-          "description": "Environment variable name for password or token for",
-          "required": false,
-          "default": "GITHUB_TOKEN"
+          "description": "Deprecated alias for server-password-env-var",
+          "required": false
         },
         "settings-path": {
           "description": "Path to where the settings.xml file will be written. Default is ~/.m2.",
@@ -261,8 +264,12 @@
           "required": false,
           "default": ""
         },
+        "gpg-passphrase-env-var": {
+          "description": "Environment variable name for the GPG private key passphrase. Defaults to GPG_PASSPHRASE when gpg-private-key is set.",
+          "required": false
+        },
         "gpg-passphrase": {
-          "description": "Environment variable name for the GPG private key passphrase. Defaults to GPG_PASSPHRASE when gpg-private-key is set; ignored otherwise.",
+          "description": "Deprecated alias for gpg-passphrase-env-var",
           "required": false
         },
         "cache": {
@@ -295,6 +302,11 @@
           "description": "Whether Maven should print artifact download/transfer progress to the build log. When \"false\" (default) the action sets \"-ntp\" (--no-transfer-progress) in MAVEN_ARGS to produce cleaner logs. Set to \"true\" to keep the progress output. Has no effect on non-Maven builds.",
           "required": false,
           "default": "false"
+        },
+        "problem-matcher": {
+          "description": "Whether to register the Java problem matcher (compiler errors/warnings and uncaught exceptions). Set to \"false\" to disable annotations.",
+          "required": false,
+          "default": "true"
         }
       },
       "description": "The primary cache key computed by the action for the configured build tool. Empty when caching is not enabled or when caching is skipped (e.g. cache service unavailable). Useful for composing with actions/cache or actions/cache/restore across jobs."
