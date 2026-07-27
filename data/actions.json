@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-07-20T11:32:07.372Z",
+  "$updated": "2026-07-27T12:07:55.549Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -3019,11 +3019,6 @@
           "description": ">",
           "required": false,
           "default": "git-cli"
-        },
-        "setup-git-user": {
-          "description": "Sets up the git user for commits as `\"github-actions[bot]\"`. Default to `true`",
-          "required": false,
-          "default": "true"
         }
       },
       "description": "The pull request number that was created or updated"
