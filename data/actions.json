@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-07-27T12:07:55.549Z",
+  "$updated": "2026-08-03T12:09:32.249Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -194,12 +194,12 @@
           "required": false
         },
         "java-package": {
-          "description": "The package type (jdk, jre, jdk+fx, jre+fx, jdk+crac, jre+crac)",
+          "description": "The package type (`jdk`, `jre`, `jdk+fx`, `jre+fx`, `jdk+crac`, `jre+crac`, `jdk+jmods`, `jdk+jcef`, `jre+jcef`, `jdk+ft`, or `jre+ft`). Supported values vary by distribution.",
           "required": false,
           "default": "jdk"
         },
         "architecture": {
-          "description": "The architecture of the package (defaults to the action runner's architecture)",
+          "description": "The architecture of the package (`x86`, `x64`, `armv7`, `aarch64`, `ppc64le`, `ppc64`, or `s390x`). Aliases `ia32`, `amd64`, `arm`, and `arm64` are normalized to `x86`, `x64`, `armv7`, and `aarch64`. Supported values vary by distribution and operating system. Defaults to the action runner's architecture.",
           "required": false
         },
         "jdk-file": {
@@ -212,6 +212,11 @@
         },
         "check-latest": {
           "description": "Set this option if you want the action to check for the latest available version that satisfies the version spec",
+          "required": false,
+          "default": "false"
+        },
+        "force-download": {
+          "description": "Set this option to always download Java and replace any matching version in the tool cache",
           "required": false,
           "default": "false"
         },
@@ -280,6 +285,15 @@
           "description": "The path to a dependency file: pom.xml, build.gradle, build.sbt, etc. This option can be used with the `cache` option. If this option is omitted, the action searches for the dependency file in the entire repository. This option supports wildcards and a list of file names for caching multiple dependencies.",
           "required": false
         },
+        "cache-path": {
+          "description": "The path to cache instead of the default dependency cache path for the selected package manager. This option can be used with the `cache` option and supports a list of paths and exclusion patterns.",
+          "required": false
+        },
+        "cache-read-only": {
+          "description": "Restore dependency caches without saving cache changes in the post action.",
+          "required": false,
+          "default": "false"
+        },
         "job-status": {
           "description": "Workaround to pass job status to post job step. This variable is not intended for manual setting",
           "required": false,
@@ -291,7 +305,7 @@
           "default": "${{ github.server_url == 'https://github.com' && github.token || '' }}"
         },
         "mvn-toolchain-id": {
-          "description": "Name of Maven Toolchain ID if the default name of \"${distribution}_${java-version}\" is not wanted. See examples of supported syntax in Advanced Usage file",
+          "description": "Name of Maven Toolchain ID if the default name of \"${distribution}_${java-version}\" is not wanted. When supplied, the number of IDs must match the number of Java versions. See examples of supported syntax in Advanced Usage file",
           "required": false
         },
         "mvn-toolchain-vendor": {
@@ -625,7 +639,7 @@
           "required": false
         },
         "sync-labels": {
-          "description": "Whether or not to remove labels when matching files are reverted",
+          "description": "Whether to remove configured labels when they no longer match",
           "default": "false",
           "required": false
         },
@@ -2827,7 +2841,7 @@
         "version": {
           "description": "Trivy version to use",
           "required": false,
-          "default": "v0.72.0"
+          "default": "v0.73.0"
         },
         "cache": {
           "description": "Used to specify whether caching is needed. Set to false, if you would like to disable caching.",
@@ -2975,7 +2989,7 @@
       "name": "Changesets",
       "inputs": {
         "github-token": {
-          "description": "The GitHub token to use for authentication. Defaults to the GitHub-provided token.",
+          "description": ">",
           "required": false,
           "default": "${{ github.token }}"
         },
@@ -3015,10 +3029,10 @@
           "required": false,
           "default": "true"
         },
-        "commit-mode": {
+        "push-with-git-cli": {
           "description": ">",
           "required": false,
-          "default": "git-cli"
+          "default": "false"
         }
       },
       "description": "The pull request number that was created or updated"
