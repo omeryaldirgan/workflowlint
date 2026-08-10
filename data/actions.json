@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-08-03T12:09:32.249Z",
+  "$updated": "2026-08-10T10:06:01.013Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -265,7 +265,7 @@
           "default": "true"
         },
         "gpg-private-key": {
-          "description": "GPG private key to import. Default is empty string.",
+          "description": "GPG private key to import into an isolated temporary keyring. Default is empty string.",
           "required": false,
           "default": ""
         },
@@ -281,6 +281,10 @@
           "description": "Name of the build platform to cache dependencies. It can be \"maven\", \"gradle\" or \"sbt\".",
           "required": false
         },
+        "cache-jdk": {
+          "description": "Cache downloaded JDK installations between jobs. Defaults to enabled when dependency caching is configured with `cache`; set explicitly to \"true\" or \"false\" to override.",
+          "required": false
+        },
         "cache-dependency-path": {
           "description": "The path to a dependency file: pom.xml, build.gradle, build.sbt, etc. This option can be used with the `cache` option. If this option is omitted, the action searches for the dependency file in the entire repository. This option supports wildcards and a list of file names for caching multiple dependencies.",
           "required": false
@@ -290,7 +294,7 @@
           "required": false
         },
         "cache-read-only": {
-          "description": "Restore dependency caches without saving cache changes in the post action.",
+          "description": "Restore caches without saving cache changes in the post action.",
           "required": false,
           "default": "false"
         },
@@ -305,7 +309,7 @@
           "default": "${{ github.server_url == 'https://github.com' && github.token || '' }}"
         },
         "mvn-toolchain-id": {
-          "description": "Name of Maven Toolchain ID if the default name of \"${distribution}_${java-version}\" is not wanted. When supplied, the number of IDs must match the number of Java versions. See examples of supported syntax in Advanced Usage file",
+          "description": "Name of Maven Toolchain ID if the default name of \"${mvn-toolchain-vendor}_${java-version}\" is not wanted. The toolchain vendor defaults to the \"distribution\" input. When supplied, the number of IDs must match the number of Java versions. See examples of supported syntax in Advanced Usage file",
           "required": false
         },
         "mvn-toolchain-vendor": {
