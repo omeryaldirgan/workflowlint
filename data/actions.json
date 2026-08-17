@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-08-10T10:06:01.013Z",
+  "$updated": "2026-08-17T09:27:04.325Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -95,7 +95,7 @@
           "description": "Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0."
         },
         "node-version-file": {
-          "description": "File containing the version Spec of the version to use.  Examples: package.json, .nvmrc, .node-version, .tool-versions."
+          "description": "File containing the version Spec of the version to use.  Examples: package.json, .nvmrc, .node-version, .tool-versions, mise.toml."
         },
         "architecture": {
           "description": "Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default."
@@ -2845,7 +2845,7 @@
         "version": {
           "description": "Trivy version to use",
           "required": false,
-          "default": "v0.73.0"
+          "default": "v0.74.0"
         },
         "cache": {
           "description": "Used to specify whether caching is needed. Set to false, if you would like to disable caching.",
@@ -3037,6 +3037,10 @@
           "description": ">",
           "required": false,
           "default": "false"
+        },
+        "cwd": {
+          "description": "The working directory to execute Changesets in. Defaults to the root of the repository.",
+          "required": false
         }
       },
       "description": "The pull request number that was created or updated"
@@ -3457,107 +3461,84 @@
       "inputs": {
         "github_token": {
           "description": "GitHub token",
-          "required": false,
           "default": "${{ github.token }}"
         },
         "workflow": {
-          "description": "|",
-          "required": false
+          "description": "|"
         },
         "workflow_search": {
           "description": "|",
-          "required": false,
           "default": "false"
         },
         "workflow_conclusion": {
           "description": "|",
-          "required": false,
           "default": "success"
         },
         "repo": {
           "description": "Repository name with owner (like actions/checkout)",
-          "required": false,
           "default": "${{ github.repository }}"
         },
         "pr": {
-          "description": "Pull request number",
-          "required": false
+          "description": "Pull request number"
         },
         "commit": {
-          "description": "Commit hash",
-          "required": false
+          "description": "Commit hash"
         },
         "branch": {
-          "description": "Branch name",
-          "required": false
+          "description": "Branch name"
         },
         "ref": {
-          "description": "Commit hash or branch name",
-          "required": false
+          "description": "Commit hash, branch or tag name"
         },
         "event": {
-          "description": "Event type",
-          "required": false
+          "description": "Event type"
         },
         "run_id": {
-          "description": "Workflow run id",
-          "required": false
+          "description": "Workflow run id"
         },
         "run_number": {
-          "description": "Workflow run number",
-          "required": false
+          "description": "Workflow run number"
         },
         "name": {
-          "description": "Artifact name (download all artifacts if not specified)",
-          "required": false
+          "description": "Artifact name (download all artifacts if not specified)"
         },
         "name_is_regexp": {
           "description": "Treat artifact name as a regular expression and download only artifacts with matching names",
-          "required": false,
           "default": "false"
         },
         "path": {
           "description": "Where to unpack the artifact",
-          "required": false,
           "default": "./"
         },
         "allow_forks": {
           "description": "Allow forks",
-          "required": false,
           "default": "false"
         },
         "check_artifacts": {
           "description": "Check workflow run whether it has an artifact",
-          "required": false,
           "default": "false"
         },
         "search_artifacts": {
           "description": "Search workflow runs for artifact with specified name",
-          "required": false,
           "default": "false"
         },
         "skip_unpack": {
           "description": "Choose to skip unpacking the downloaded artifact(s)",
-          "required": false,
           "default": "false"
         },
         "dry_run": {
-          "description": "Check the existence of artifact(s) without downloading",
-          "required": false
+          "description": "Check the existence of artifact(s) without downloading"
         },
         "if_no_artifact_found": {
-          "required": false,
           "description": "|",
           "default": "fail"
         },
         "use_unzip": {
           "description": "Use system provided `unzip` utility instead of JS library for unpacking",
-          "required": false,
           "default": "false"
         },
         "merge_multiple": {
           "description": "If multiple artifacts are found with `name_is_regexp` set to `true`, merge them into one directory",
-          "required": false,
           "default": "false"
         }
       },
