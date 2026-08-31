@@ -1,6 +1,6 @@
 {
   "$source": "https://json.schemastore.org/github-workflow.json",
-  "$updated": "2026-08-24T09:33:03.115Z",
+  "$updated": "2026-08-31T16:26:35.655Z",
   "permissions": [
     "actions",
     "artifact-metadata",
@@ -8,6 +8,7 @@
     "checks",
     "code-quality",
     "contents",
+    "copilot-requests",
     "deployments",
     "discussions",
     "id-token",
@@ -18,7 +19,8 @@
     "pull-requests",
     "repository-projects",
     "security-events",
-    "statuses"
+    "statuses",
+    "vulnerability-alerts"
   ],
   "events": [
     {
