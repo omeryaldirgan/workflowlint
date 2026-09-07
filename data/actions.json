@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-08-31T16:26:52.836Z",
+  "$updated": "2026-09-07T14:31:19.455Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -226,11 +226,11 @@
           "default": "true"
         },
         "verify-signature": {
-          "description": "Verify downloaded Java package signatures when supported by the selected distribution",
+          "description": "Check downloaded Java package signatures when supported by the selected distribution. When omitted, failures produce warnings. Explicitly setting this to true enforces verification and makes failures fatal, including failures caused by an unexpected vendor signing-key rotation.",
           "required": false
         },
         "verify-signature-public-key": {
-          "description": "ASCII-armored GPG public key used to verify the downloaded package signature. Overrides the default bundled key for the selected distribution.",
+          "description": "One or more ASCII-armored GPG public keys used to verify downloaded package signatures. Concatenate multiple armored key blocks. Custom keys replace the bundled keys for the selected distribution.",
           "required": false
         },
         "server-id": {

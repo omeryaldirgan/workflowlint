@@ -1,6 +1,6 @@
 {
   "$source": "https://json.schemastore.org/github-workflow.json",
-  "$updated": "2026-08-31T16:26:35.655Z",
+  "$updated": "2026-09-07T14:31:04.591Z",
   "permissions": [
     "actions",
     "artifact-metadata",
@@ -24,13 +24,29 @@
   ],
   "events": [
     {
-      "event": "branch_protection_rule"
+      "event": "branch_protection_rule",
+      "types": [
+        "created",
+        "edited",
+        "deleted"
+      ]
     },
     {
-      "event": "check_run"
+      "event": "check_run",
+      "types": [
+        "created",
+        "rerequested",
+        "completed",
+        "requested_action"
+      ]
     },
     {
-      "event": "check_suite"
+      "event": "check_suite",
+      "types": [
+        "completed",
+        "requested",
+        "rerequested"
+      ]
     },
     {
       "event": "create"
@@ -45,10 +61,30 @@
       "event": "deployment_status"
     },
     {
-      "event": "discussion"
+      "event": "discussion",
+      "types": [
+        "created",
+        "edited",
+        "deleted",
+        "transferred",
+        "pinned",
+        "unpinned",
+        "labeled",
+        "unlabeled",
+        "locked",
+        "unlocked",
+        "category_changed",
+        "answered",
+        "unanswered"
+      ]
     },
     {
-      "event": "discussion_comment"
+      "event": "discussion_comment",
+      "types": [
+        "created",
+        "edited",
+        "deleted"
+      ]
     },
     {
       "event": "fork"
@@ -57,31 +93,94 @@
       "event": "gollum"
     },
     {
-      "event": "issue_comment"
+      "event": "issue_comment",
+      "types": [
+        "created",
+        "edited",
+        "deleted"
+      ]
     },
     {
-      "event": "issues"
+      "event": "issues",
+      "types": [
+        "opened",
+        "edited",
+        "deleted",
+        "transferred",
+        "pinned",
+        "unpinned",
+        "closed",
+        "reopened",
+        "assigned",
+        "unassigned",
+        "labeled",
+        "unlabeled",
+        "locked",
+        "unlocked",
+        "milestoned",
+        "demilestoned",
+        "typed",
+        "untyped",
+        "field_added",
+        "field_removed"
+      ]
     },
     {
-      "event": "label"
+      "event": "label",
+      "types": [
+        "created",
+        "edited",
+        "deleted"
+      ]
     },
     {
-      "event": "merge_group"
+      "event": "merge_group",
+      "types": [
+        "checks_requested"
+      ]
     },
     {
-      "event": "milestone"
+      "event": "milestone",
+      "types": [
+        "created",
+        "closed",
+        "opened",
+        "edited",
+        "deleted"
+      ]
     },
     {
       "event": "page_build"
     },
     {
-      "event": "project"
+      "event": "project",
+      "types": [
+        "created",
+        "updated",
+        "closed",
+        "reopened",
+        "edited",
+        "deleted"
+      ]
     },
     {
-      "event": "project_card"
+      "event": "project_card",
+      "types": [
+        "created",
+        "moved",
+        "converted",
+        "edited",
+        "deleted"
+      ]
     },
     {
-      "event": "project_column"
+      "event": "project_column",
+      "types": [
+        "created",
+        "updated",
+        "moved",
+        "deleted"
+      ]
     },
     {
       "event": "public"
@@ -90,10 +189,20 @@
       "event": "pull_request"
     },
     {
-      "event": "pull_request_review"
+      "event": "pull_request_review",
+      "types": [
+        "submitted",
+        "edited",
+        "dismissed"
+      ]
     },
     {
-      "event": "pull_request_review_comment"
+      "event": "pull_request_review_comment",
+      "types": [
+        "created",
+        "edited",
+        "deleted"
+      ]
     },
     {
       "event": "pull_request_target"
@@ -102,10 +211,23 @@
       "event": "push"
     },
     {
-      "event": "registry_package"
+      "event": "registry_package",
+      "types": [
+        "published",
+        "updated"
+      ]
     },
     {
-      "event": "release"
+      "event": "release",
+      "types": [
+        "published",
+        "unpublished",
+        "created",
+        "edited",
+        "deleted",
+        "prereleased",
+        "released"
+      ]
     },
     {
       "event": "repository_dispatch"
@@ -126,7 +248,12 @@
       "event": "workflow_dispatch"
     },
     {
-      "event": "workflow_run"
+      "event": "workflow_run",
+      "types": [
+        "requested",
+        "completed",
+        "in_progress"
+      ]
     }
   ],
   "eventKeys": {
