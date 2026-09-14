@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-09-07T14:31:19.455Z",
+  "$updated": "2026-09-14T15:18:50.549Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -154,8 +154,16 @@
           "default": "false"
         },
         "token": {
-          "description": "The token used to authenticate when fetching Python distributions from https://github.com/actions/python-versions. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.",
+          "description": "The token used to authenticate when fetching Python distributions from https://github.com/actions/python-versions. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting. This token is only sent to GitHub-owned hosts, never to a custom 'mirror'.",
           "default": "${{ github.server_url == 'https://github.com' && github.token || '' }}"
+        },
+        "mirror": {
+          "description": "Base URL for downloading Python distributions (only applies to CPython; PyPy and GraalPy are unaffected). Defaults to https://raw.githubusercontent.com/actions/python-versions/main. See docs/advanced-usage.md for details.",
+          "default": "https://raw.githubusercontent.com/actions/python-versions/main"
+        },
+        "mirror-token": {
+          "description": "Token used to authenticate requests to the host named in 'mirror'. Sent verbatim as the Authorization header, so include a scheme if your mirror needs one (e.g. 'Bearer <token>').",
+          "required": false
         },
         "cache-dependency-path": {
           "description": "Used to specify the path to dependency files. Supports wildcards or a list of file names for caching multiple dependencies."
@@ -939,6 +947,11 @@
           "default": "false",
           "required": false
         },
+        "exempt-issue-types": {
+          "description": "Issues with a matching type are exempt from being processed as stale/closed. Defaults to `[]` (disabled) and can be a comma-separated list of issue types.",
+          "default": "",
+          "required": false
+        },
         "only-issue-types": {
           "description": "Only issues with a matching type are processed as stale/closed. Defaults to `[]` (disabled) and can be a comma-separated list of issue types.",
           "default": "",
@@ -1429,7 +1442,11 @@
           "required": false
         },
         "sts-endpoint": {
-          "description": "Custom STS endpoint URL. Use this to point to an STS-compatible API (e.g. MinIO, LocalStack) instead of the default AWS STS endpoint for the region.",
+          "description": "Custom STS endpoint URL. Use this to point to an STS-compatible API instead of the default AWS STS endpoint for the region.",
+          "required": false
+        },
+        "translate-env-variables": {
+          "description": "Whether to translate AWS environment variables to action inputs. Defaults to true. Translating environment variables automatically may cause unexpected behavior if you have other actions that set AWS environment variables.",
           "required": false
         }
       },
@@ -1675,6 +1692,15 @@
           "description": "The type of authentication. Supported values are SERVICE_PRINCIPAL, IDENTITY. Default value is SERVICE_PRINCIPAL",
           "required": false,
           "default": "SERVICE_PRINCIPAL"
+        },
+        "max-context-population": {
+          "description": "Only used when enable-AzPSSession is true. Overrides the Azure PowerShell MaxContextPopulation used by Connect-AzAccount (the number of subscription contexts loaded). Set to -1 to load all subscriptions, or a positive integer. When unset, the Azure PowerShell default of 25 applies.",
+          "required": false
+        },
+        "mask-client-id": {
+          "description": "Set this value to false to stop registering the client-id as a secret, so it is not masked in workflow logs",
+          "required": false,
+          "default": "true"
         }
       },
       "description": "Authenticate to Azure and run your Azure CLI or Azure PowerShell based actions or scripts."
