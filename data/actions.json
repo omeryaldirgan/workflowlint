@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-09-14T15:18:50.549Z",
+  "$updated": "2026-09-21T15:23:34.637Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -385,7 +385,7 @@
           "description": "Custom base URL for downloading Go distributions. Use this to download Go from a mirror or custom source. Defaults to \"https://go.dev/dl\". Can also be set via the GO_DOWNLOAD_BASE_URL environment variable. The input takes precedence over the environment variable."
         }
       },
-      "description": "A boolean value to indicate if a cache was hit"
+      "description": "The value of `go env GOTOOLDIR`, the directory holding the toolchain binaries."
     },
     "actions/setup-dotnet": {
       "name": "Setup .NET Core SDK",
@@ -1265,7 +1265,7 @@
       "name": "Docker Metadata action",
       "inputs": {
         "context": {
-          "description": "Where to get context data. Allowed options are \"workflow\"  (default), \"git\".",
+          "description": "Where to get context data. Allowed options are \"workflow\" (default), \"git\", \"git:<path>\".",
           "default": "workflow",
           "required": true
         },
@@ -2020,6 +2020,11 @@
           "description": "The file location of a pre-downloaded version of the CLI. If specified, integrity checking will be bypassed.",
           "required": false
         },
+        "cleanup": {
+          "description": "If true, download the CLI into a temporary directory and clean it up after the run. Off by default to preserve legacy behavior of downloading into the current working directory.",
+          "required": false,
+          "default": "false"
+        },
         "codecov_yml_path": {
           "description": "The location of the codecov.yml file. This is crrently ONLY used for automated test selection (https://docs.codecov.com/docs/getting-started-with-ats). Note that for all other cases, the Codecov yaml will need to be located as described here: https://docs.codecov.com/docs/codecov-yaml#can-i-name-the-file-codecovyml",
           "required": false
@@ -2558,45 +2563,6 @@
         }
       },
       "description": "The status of the deployment that indicates if the run failed or passed. Possible outputs include: success|failed|skipped"
-    },
-    "cloudflare/pages-action": {
-      "name": "Cloudflare Pages GitHub Action",
-      "inputs": {
-        "apiToken": {
-          "description": "Cloudflare API Token",
-          "required": true
-        },
-        "accountId": {
-          "description": "Cloudflare Account ID",
-          "required": true
-        },
-        "projectName": {
-          "description": "The name of the Pages project to upload to",
-          "required": true
-        },
-        "directory": {
-          "description": "The directory of static assets to upload",
-          "required": true
-        },
-        "gitHubToken": {
-          "description": "GitHub Token",
-          "required": false
-        },
-        "branch": {
-          "description": "The name of the branch you want to deploy to",
-          "required": false
-        },
-        "workingDirectory": {
-          "description": "The working directory in which to run Wrangler",
-          "required": false
-        },
-        "wranglerVersion": {
-          "description": "The version of Wrangler to use",
-          "required": false,
-          "default": "2"
-        }
-      },
-      "description": "Publish to Cloudflare Pages"
     },
     "amondnet/vercel-action": {
       "name": "Vercel Action",
