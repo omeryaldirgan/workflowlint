@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-09-21T15:23:34.637Z",
+  "$updated": "2026-09-28T17:06:06.463Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -207,7 +207,7 @@
           "default": "jdk"
         },
         "architecture": {
-          "description": "The architecture of the package (`x86`, `x64`, `armv7`, `aarch64`, `ppc64le`, `ppc64`, or `s390x`). Aliases `ia32`, `amd64`, `arm`, and `arm64` are normalized to `x86`, `x64`, `armv7`, and `aarch64`. Supported values vary by distribution and operating system. Defaults to the action runner's architecture.",
+          "description": "The architecture of the package (`x86`, `x64`, `armv7`, `aarch64`, `ppc64le`, `ppc64`, `riscv64`, or `s390x`). Aliases `ia32`, `amd64`, `arm`, and `arm64` are normalized to `x86`, `x64`, `armv7`, and `aarch64`. Supported values vary by distribution and operating system. Defaults to the action runner's architecture.",
           "required": false
         },
         "jdk-file": {
@@ -433,6 +433,10 @@
         },
         "architecture": {
           "description": "Optional architecture for the .NET install. Supported values: x64, x86, arm64, amd64, arm, s390x, ppc64le, riscv64. If not set, the installer auto-detects the current system architecture.",
+          "required": false
+        },
+        "check-latest": {
+          "description": "Optional, defaults to true. When false, a locally installed SDK that satisfies the requested version is reused without any network calls, otherwise the latest matching version is installed online. Cross-architecture requests always install online. Falls back to the DOTNET_CHECK_LATEST environment variable when this input is not set.",
           "required": false
         }
       },
@@ -3536,7 +3540,8 @@
           "default": "false"
         },
         "dry_run": {
-          "description": "Check the existence of artifact(s) without downloading"
+          "description": "Check the existence of artifact(s) without downloading",
+          "default": "false"
         },
         "if_no_artifact_found": {
           "description": "|",
