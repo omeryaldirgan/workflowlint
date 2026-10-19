@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-10-12T18:17:18.502Z",
+  "$updated": "2026-10-19T15:55:58.655Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -274,13 +274,17 @@
           "description": "Multiline list of Maven dependency repositories in the format `repository-id:repository-url:snapshots-enabled`.",
           "required": false
         },
+        "mvn-plugin-repositories": {
+          "description": "Multiline list of Maven plugin repositories in the format `repository-id:repository-url:snapshots-enabled`.",
+          "required": false
+        },
         "mvn-repositories-include-central": {
-          "description": "Include Maven Central in the generated dependency repositories profile. When false, Central is disabled unless an explicit repository with ID `central` is declared.",
+          "description": "Include Maven Central for dependency and plugin repositories in the generated profile. When false, Central is disabled for both types unless that type explicitly declares ID `central`. Has no effect when neither repository list is configured.",
           "required": false,
           "default": "true"
         },
         "mvn-repositories-prioritize-central": {
-          "description": "Place Maven Central before custom dependency repositories. Has no effect when Maven Central is excluded.",
+          "description": "Place Maven Central before custom dependency and plugin repositories. Has no effect when Maven Central is excluded or neither repository list is configured.",
           "required": false,
           "default": "true"
         },
@@ -2862,7 +2866,7 @@
         "version": {
           "description": "Trivy version to use",
           "required": false,
-          "default": "v0.75.0"
+          "default": "v0.76.0"
         },
         "cache": {
           "description": "Used to specify whether caching is needed. Set to false, if you would like to disable caching.",
@@ -2908,6 +2912,11 @@
           "required": false,
           "default": "archive"
         },
+        "fail_on_publish_error": {
+          "description": "INPUT: Fail the step when the Scorecard API rejects published results. Network errors, 408, 429 and 5xx responses are retried and only produce a warning.",
+          "required": false,
+          "default": "false"
+        },
         "internal_publish_base_url": {
           "description": "INPUT: Base URL for publishing results. Used for testing.",
           "required": false,
@@ -2919,7 +2928,7 @@
           "default": "${{ github.token }}"
         }
       },
-      "description": "Run OSSF Scorecard checks and output results in SARIF, JSON, or in-toto format"
+      "description": "HTTP status code of the final publish attempt, `error` if no response was received, or `skipped` if publishing was not attempted"
     },
     "softprops/action-gh-release": {
       "name": "",
