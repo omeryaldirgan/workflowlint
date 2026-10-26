@@ -1,6 +1,6 @@
 {
   "$source": "https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions",
-  "$updated": "2026-10-19T15:55:46.425Z",
+  "$updated": "2026-10-26T15:32:26.589Z",
   "contexts": [
     {
       "context": "github.event.issue.title",
