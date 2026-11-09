@@ -1,6 +1,6 @@
 {
   "$source": "https://github.com/actions/runner-images",
-  "$updated": "2026-11-02T18:54:29.484Z",
+  "$updated": "2026-11-09T19:15:25.566Z",
   "runners": [
     "arm",
     "arm64",
@@ -8,8 +8,6 @@
     "macos",
     "macos-14",
     "macos-14-Readme",
-    "macos-14-arm64",
-    "macos-14-arm64-Readme",
     "macos-14-large",
     "macos-14-xlarge",
     "macos-15",
@@ -45,7 +43,6 @@
     "ubuntu-latest-8-cores",
     "windows",
     "windows-11-arm",
-    "windows-11-arm64",
     "windows-11-vs2026-arm",
     "windows-11-vs2026-arm64",
     "windows-2022",
