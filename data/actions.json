@@ -1,6 +1,6 @@
 {
   "$source": "GitHub Action repositories (action.yml)",
-  "$updated": "2026-11-09T19:15:41.062Z",
+  "$updated": "2026-11-16T18:58:58.182Z",
   "actions": {
     "actions/checkout": {
       "name": "Checkout",
@@ -359,9 +359,9 @@
           "default": "false"
         },
         "problem-matcher": {
-          "description": "Whether to register the Java problem matcher (compiler errors/warnings and uncaught exceptions). Set to \"false\" to disable annotations.",
+          "description": "Whether to register the Java problem matcher (compiler errors/warnings and uncaught exceptions). Disabled by default; set to \"true\" to enable annotations.",
           "required": false,
-          "default": "true"
+          "default": "false"
         }
       },
       "description": "The primary cache key computed by the action for the configured build tool. Empty when caching is not enabled or when caching is skipped (e.g. cache service unavailable). Useful for composing with actions/cache or actions/cache/restore across jobs."
@@ -1493,6 +1493,11 @@
           "description": ">-",
           "required": false,
           "default": "private"
+        },
+        "ecr-private-token-type": {
+          "description": ">-",
+          "required": false,
+          "default": "regional-token"
         },
         "skip-logout": {
           "description": ">-",
